@@ -17,6 +17,13 @@
  */
 define( 'WPINC', 'wp-includes' );
 
+/**
+ * Stores the location of the WordPress directory of functions, classes, and core content.
+ *
+ * @since 1.0.0
+ */
+define( 'WPMOD', 'wp-modules' );
+
 // Include files required for initialization.
 require( ABSPATH . WPINC . '/load.php' );
 require( ABSPATH . WPINC . '/default-constants.php' );
@@ -69,6 +76,7 @@ wp_set_lang_dir();
 
 // Load early WordPress files.
 require( ABSPATH . WPINC . '/compat.php' );
+require( ABSPATH . WPINC . '/class-wp-module.php' );
 require( ABSPATH . WPINC . '/functions.php' );
 require( ABSPATH . WPINC . '/class-wp.php' );
 require( ABSPATH . WPINC . '/class-wp-error.php' );
@@ -97,6 +105,8 @@ if ( is_multisite() ) {
 }
 
 register_shutdown_function( 'shutdown_action_hook' );
+require ABSPATH . WPMOD . '/load.php';
+require( ABSPATH . WPINC . '/core-compat.php' );
 
 // Stop most of WordPress from being loaded if we just want the basics.
 if ( SHORTINIT )
@@ -200,11 +210,6 @@ wp_ssl_constants();
 
 // Create common globals.
 require( ABSPATH . WPINC . '/vars.php' );
-
-// Make taxonomies and posts available to plugins and themes.
-// @plugin authors: warning: these get registered again on the init hook.
-create_initial_taxonomies();
-create_initial_post_types();
 
 // Register the default theme directory root
 register_theme_directory( get_theme_root() );
