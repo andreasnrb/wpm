@@ -1,7 +1,7 @@
 <?php
 class Taxonomies extends WP_Module {
     function run() {
-        add_action( 'init', array($this, 'create_initial_taxonomies'), 0); // highest priority
+        add_action( 'init', array($this, 'create_core_taxonomies'), 0); // highest priority
     }
 
     /**
@@ -11,7 +11,7 @@ class Taxonomies extends WP_Module {
      * backwards compatibility reasons), and again on the 'init' action. We must avoid
      * registering rewrite rules before the 'init' action.
      */
-    function create_initial_taxonomies() {
+    function create_core_taxonomies() {
         /**
          * @var WP_Rewrite $wp_rewrite
          */

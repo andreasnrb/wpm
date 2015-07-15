@@ -1,9 +1,9 @@
 <?php
-class AttachmentPostType extends WP_Module
+class AttachmentPostType extends WP_Core_PostType_Module
 {
     function run()
     {
-        add_action('init', array($this, 'create_initial_post_types'), 0);
+        add_action('init', array($this, 'create_post_type'), 0);
         add_action('_admin_menu', array($this, 'admin_menu'), 0);
     }
     function admin_menu()
@@ -27,7 +27,7 @@ class AttachmentPostType extends WP_Module
      *
      * @since 2.9.0
      */
-    function create_initial_post_types() {
+    function create_post_type() {
         register_post_type( 'attachment', array(
             'labels' => array(
                 'name' => _x('Media', 'post type general name'),
