@@ -7,6 +7,7 @@ function retrieve_modules() {
 //        'core-comments' => 'Comments',
 //        'core-taxonomies' => 'Taxonomies',
 //        'core-post-types' => 'PostTypes',
+//          'core-post-type-attachment' => 'AttachmentPostType',
 //        'mu-plugins' => 'MU_Plugins'
     );
 }

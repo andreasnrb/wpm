@@ -73,33 +73,6 @@ class PostTypes extends WP_Module {
             'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'custom-fields', 'comments', 'revisions' ),
         ) );
 
-        register_post_type( 'attachment', array(
-            'labels' => array(
-                'name' => _x('Media', 'post type general name'),
-                'name_admin_bar' => _x( 'Media', 'add new from admin bar' ),
-                'add_new' => _x( 'Add New', 'add new media' ),
-                'edit_item' => __( 'Edit Media' ),
-                'view_item' => __( 'View Attachment Page' ),
-            ),
-            'public' => true,
-            'show_ui' => true,
-            '_builtin' => true, /* internal use only. don't use this when registering your own post type. */
-            '_edit_link' => 'post.php?post=%d', /* internal use only. don't use this when registering your own post type. */
-            'capability_type' => 'post',
-            'capabilities' => array(
-                'create_posts' => 'upload_files',
-            ),
-            'map_meta_cap' => true,
-            'hierarchical' => false,
-            'rewrite' => false,
-            'query_var' => false,
-            'show_in_nav_menus' => false,
-            'delete_with_user' => true,
-            'supports' => array( 'title', 'author', 'comments' ),
-        ) );
-        add_post_type_support( 'attachment:audio', 'thumbnail' );
-        add_post_type_support( 'attachment:video', 'thumbnail' );
-
         register_post_type( 'revision', array(
             'labels' => array(
                 'name' => __( 'Revisions' ),
